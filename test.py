@@ -9,12 +9,12 @@ champ = []
 champdic = {}
 gamemode = {}
 
-gamemode['420']='솔랭'
-gamemode['430']='일반'
-gamemode['440']='자유 5:5랭크'
-gamemode['450']='무작위 총력전'
-gamemode['900']='URF'
-gamemode['1020']='이벤트'
+gamemode['420'] = '솔랭'
+gamemode['430'] = '일반'
+gamemode['440'] = '자유 5:5랭크'
+gamemode['450'] = '무작위 총력전'
+gamemode['900'] = 'URF'
+gamemode['1020'] = '이벤트'
 # First we get the latest version of the game from data dragon
 versions = watcher.data_dragon.versions_for_region(my_region)
 champions_version = versions['n']['champion']
@@ -33,13 +33,15 @@ my_matches = watcher.match.matchlist_by_account(my_region, me['accountId'])
 
 # print(my_matches)
 # fetch last match detail
-last_match = my_matches['matches'][0]
+
+# last_match = my_matches['matches'][0]
+# match_detail = watcher.match.by_id(my_region, last_match['gameId'])
 
 # print(my_matches['matches'])
 # for data in my_matches['matches']:
-    # print(champdic[str(data['champion'])], gamemode[str(data['queue'])])
-    # https://ddragon.leagueoflegends.com/cdn/10.6.1/img/champion/{ champdic[str(data['champion'])] }.png
-match_detail = watcher.match.by_id(my_region, last_match['gameId'])
+# print(champdic[str(data['champion'])], gamemode[str(data['queue'])])
+# https://ddragon.leagueoflegends.com/cdn/10.6.1/img/champion/{ champdic[str(data['champion'])] }.png
+
 
 # print(match_detail)
 # for data in match_detail['participants']:
@@ -57,7 +59,7 @@ for idx, matched_num in enumerate(my_matches['matches']):
         participants = []
         for i, row in enumerate(match_detail['participants']):
             participants_row = {}
-            participants_row['                       name'] = playerName[i]
+            participants_row['name'] = playerName[i]
             participants_row['champion'] = champdic[str(row['championId'])]
             participants_row['spell1'] = row['spell1Id']
             participants_row['spell2'] = row['spell2Id']
