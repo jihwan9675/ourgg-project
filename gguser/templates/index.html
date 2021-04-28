@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block contents %}
+
+<div class="container" style="padding-top:300px;">
+    <div class="form-group">
+        <form class="row" method="post" enctype="multipart/form-data" novalidate>
+            <input type="text" class="form-control col-md-5" id="search" placeholder="소환사명, 소환사명 …"
+                name="summoner-search-form__text _suggest" />
+            <button class="btn btn-primary col-md-2 ml-3" type="submit" id="search">검색하기</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
