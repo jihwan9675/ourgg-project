@@ -1,6 +1,6 @@
 <html>
+
 <head>
-    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -14,7 +14,7 @@
         crossorigin="anonymous"></script>
     <header>
         <div class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <a class="navbar-brand" href="/">OUR.GG</a>
+            <a class="navbar-brand" href="/">LOL.GG</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,11 +23,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/search/">전적조회<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/predict/">전적조회<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/findduo/">듀오구함<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/board/">듀오구함<span class="sr-only">(current)</span></a>
                     </li>
+                    <!-- <li class="nav-item active">
+                        <a class="nav-link" href="/annotation/"><span class="sr-only">(current)</span></a>
+                    </li> -->
                 </ul>
                 <form class="form-inline my-3 my-lg-1">
                     {% if username != None %}
@@ -40,26 +43,14 @@
                         onclick="location.href='/login/'">로그인</button>
                     {% endif %}
                 </form>
-            
-        </div>
+            </div>
     </header>
-    {% block header %}
-    {% endblock %}
 </head>
 
-<!-- <body class="d-flex flex-column h-100"> -->
-    <body>
-    <div style="padding-top: 60px; margin-left:0%; margin-right:0%;margin:0%;padding-bottom: 0%;">
-        {% block contents2 %}
-        {% endblock %}
-    </div>
-    <div class="container" style="padding-top:30px;">
-        {% block contents %}
-        {% endblock %}
-    </div>
-    <div class="content" style="text-align: center;">
-    {% block contents3 %}
+
+<body>
+    {% block contents %}
     {% endblock %}
-    </div>
 </body>
+
 </html>
