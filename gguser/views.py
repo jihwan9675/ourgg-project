@@ -1,8 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
 from django.contrib.auth.hashers import make_password
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, IndexForm
 from .models import User
+
+
+class IndexView(FormView):
+    template_name = 'index.html'
+    form_class = IndexForm
+    success_url = '/'    
+
 
 class LoginView(FormView): # http://ip:port/login
     template_name = 'login.html'

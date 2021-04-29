@@ -3,6 +3,14 @@ from .models import User
 from django.contrib.auth.hashers import check_password, make_password
 
 
+class IndexForm(forms.Form):
+    userName = forms.CharField(max_length=64)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        userName = cleaned_data.get('userName')
+        print(userName)
+
 class LoginForm(forms.Form):
     userid = forms.CharField(error_messages={
         'required': '아이디를 입력해주세요.'
