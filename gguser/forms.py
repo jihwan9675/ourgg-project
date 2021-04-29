@@ -66,7 +66,7 @@ class RegisterForm(forms.Form):
         # No problem then, 
         cleaned_data = super().clean()
         userid = cleaned_data.get('userid')
-        username = cleaned_data.get('username')
+        #username = cleaned_data.get('username')
         password = cleaned_data.get('password')
         re_password = cleaned_data.get('re_password')
 
@@ -76,9 +76,9 @@ class RegisterForm(forms.Form):
                 self.add_error('re_password', '비밀번호가 다릅니다.')
         # I need to add check reduplication code.
         
-        try:
-            user = User.objects.get(userid=userid)
-            self.add_error('password', '비밀번호가 다릅니다.')
-        except User.DoesNotExist:
-            self.add_error('userid', '등록된 아이디가 없습니다.')
+        # try:
+        #     user = User.objects.get(userid=userid)
+        #     self.add_error('password', '비밀번호가 다릅니다.')
+        # except User.DoesNotExist:
+        #     self.add_error('userid', '등록된 아이디가 없습니다.')
             

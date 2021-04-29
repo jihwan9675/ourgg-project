@@ -51,27 +51,18 @@
     <div class="container" style="padding-top:300px;">
         <div class="row mt-5">
             <div class="col-12">
-                <form method="POST" action="signin">
+                <form method="POST" action=".">
+                    {% csrf_token %}
+                    {% for field in form %}
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" 
-                        placeholder="이름을 입력해주세요." name="{{ field.name }}"/>
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label}}" 
+                        placeholder="{{ field.label }}" name="{{ field.name }}"/>
                     </div>
-                    <div class="form-group">
-                        <label for="userid">ID</label>
-                        <input type="text" class="form-control" id="userid" 
-                        placeholder="아이디를 입력해주세요." name="uid"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" 
-                        placeholder="비밀번호를 입력해주세요." name="userpassword"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="re_password">Re-Password</label>
-                        <input type="password" class="form-control" id="repassword" 
-                        placeholder="비밀번호를 다시 입력해주세요." name="userrepassword"/>
-                    </div>
+                    {% if field.errors %}
+                    <span style="color: red">{{ field.errors }}</span>
+                    {% endif %}
+                    {% endfor %}
                     <button type="submit" class="btn btn-primary">회원가입</button>
                 </form>
             </div>

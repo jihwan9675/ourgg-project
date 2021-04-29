@@ -5,13 +5,33 @@ from .forms import RegisterForm, LoginForm, IndexForm
 from .models import User
 
 
+def logout(request):  # http://ip:port/logout
+    del(request.session['user'])
+    return redirect('/')
+
+
 class IndexView(FormView):
     template_name = 'index.html'
     form_class = IndexForm
-    success_url = '/'    
+    success_url = '/'
+
+    def get(self, request, *args, **kwargs):  # GET Method (preidct/)
+        form = self.form_class(request, initial=self.initial)
+        return render(request, self.template_name, {'form': form, 'username': request.session.get('user')})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request, initial=self.initial)
+        return render(request, self.template_name, {'form': form, 'username': request.session.get('user')})
+
+    def get_form_kwargs(self, **kwargs):
+        kw = super().get_form_kwargs(**kwargs)
+        kw.update({
+            'request': self.request
+        })
+        return kw
 
 
-class LoginView(FormView): # http://ip:port/login
+class LoginView(FormView):  # http://ip:port/login
     template_name = 'login.html'
     form_class = LoginForm
     success_url = '/'
@@ -22,7 +42,7 @@ class LoginView(FormView): # http://ip:port/login
         return super().form_valid(form)
 
 
-class RegisterView(FormView): # http://ip:port/register
+class RegisterView(FormView):  # http://ip:port/register
     template_name = 'register.html'
     form_class = RegisterForm
     success_url = '/login/'

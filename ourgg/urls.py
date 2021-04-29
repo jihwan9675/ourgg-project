@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from gguser.views import LoginView, RegisterView, IndexView
+from gguser.views import LoginView, RegisterView, IndexView, logout
 from summoner.views import SummonerView
 
 urlpatterns = [
@@ -24,4 +24,5 @@ urlpatterns = [
     path('login/', LoginView.as_view()),
     path('register/', RegisterView.as_view()),
     path('summoner/', SummonerView.as_view()),
+    path('logout/', logout),
 ]
