@@ -22,10 +22,7 @@ class IndexView(FormView):
         return render(request, self.template_name, {'form': form, 'username': request.session.get('user')})
 
     def post(self, request, *args, **kwargs):
-        print(request.POST['userName'])
-        #return render(request, 'summoner.html', {'username': request.session.get('user')})
-        #return redirect('/summoner/'+request.POST['userName'], {'username': request.session.get('user')})   
-        return redirect('/summoner/?api=123', {'username': request.session.get('user')})   
+        return redirect('/summoner/?userName='+request.POST['userName'], {'username': request.session.get('user')})   
 
     def get_form_kwargs(self, **kwargs):
         kw = super().get_form_kwargs(**kwargs)

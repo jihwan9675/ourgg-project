@@ -31,3 +31,5 @@ from django.db import models
 #         db_table = 'user'
 #         verbose_name = '회원'
 #         verbose_name_plural = '회원'
+
+# class Record(models.Model):

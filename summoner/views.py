@@ -7,6 +7,8 @@ class SummonerView(FormView):
     form_class = SummonerForm
 
     def get(self, request, *args, **kwargs):  # GET Method (preidct/)
-        print(request.get_full_path())
+        #print(request.GET['userName'])
+        pass
+
         form = self.form_class(request, initial=self.initial)
         return render(request, self.template_name, {'form': form, 'username': request.session.get('user')})
