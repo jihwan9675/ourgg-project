@@ -9,6 +9,6 @@ class SummonerView(FormView):
     def get(self, request, *args, **kwargs):  # GET Method (preidct/)
         #print(request.GET['userName'])
         pass
-
+        
         form = self.form_class(request, initial=self.initial)
         return render(request, self.template_name, {'form': form, 'username': request.session.get('user')})
